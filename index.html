@@ -45,6 +45,17 @@ input {
     animation: float 2s infinite;
 }
 
+.galeria img {
+    width: 250px;
+    margin: 10px;
+    border-radius: 15px;
+    transition: transform 0.3s;
+}
+
+.galeria img:hover {
+    transform: scale(1.1);
+}
+
 @keyframes float {
     0% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -55,6 +66,10 @@ input {
 </head>
 
 <body>
+
+<audio id="musica" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
+</audio>
 
 <div class="container" id="inicio">
     <h1>💙 Día de la Trabajadora Social 💙</h1>
@@ -69,6 +84,15 @@ input {
     <button onclick="verificar()">Entrar</button>
 </div>
 
+<div class="container hidden" id="pregunta2">
+    <h2>💙 Una más... 💙</h2>
+    <p>¿Quién es la mejor trabajadora social?</p>
+
+    <input type="text" id="respuesta2" placeholder="Escribe tu respuesta">
+    <br><br>
+    <button onclick="verificar2()">Continuar</button>
+</div>
+
 <div class="container hidden" id="sorpresa">
     <h1 class="heart">💙 Kimberly 💙</h1>
 
@@ -78,39 +102,76 @@ input {
     </p>
 
     <p>
-        Kimberly, tu vocación habla de tu corazón, de tu empatía y de la fuerza que tienes para cambiar vidas.
+        Con lo que me has contado, sé el esfuerzo tan grande que hiciste para llegar hasta aquí.  
+        Sé que no fue fácil… que hubo momentos en los que tuviste que salir de tu casa,  
+        dejar a tu familia por un tiempo e ir a otras comunidades para ayudar a personas que te necesitaban.
     </p>
 
     <p>
-        No es una profesión fácil… pero es una de las más valiosas que existen.
-    </p>
-
-    <h2>🌟 Inspiración</h2>
-
-    <p>
-        En Guatemala, muchas mujeres han marcado la diferencia desde el trabajo social, luchando por comunidades,
-        por derechos y por un país mejor.
+        Y sé lo difícil que es eso… dejar a quienes amas, salir de tu zona de confort,  
+        enfrentarte a realidades duras… pero aun así lo hiciste.  
+        No por obligación… sino por tu corazón.
     </p>
 
     <p>
-        Y tú, Kimberly, también estás en ese camino…  
-        el de dejar huella en las personas, en las familias y en la sociedad.
+        Eso habla muchísimo de ti, Kimberly.  
+        De tu valentía, de tu empatía y de la persona tan hermosa que eres.
     </p>
+
+    <p>
+        No cualquiera tiene la fuerza de pensar primero en los demás,  
+        y tú lo haces… y lo haces con amor.
+    </p>
+
+    <h2>🌟 Tu camino</h2>
+
+    <p>
+        Estás construyendo algo muy grande…  
+        estás dejando huella en las personas, en las familias y en cada lugar donde llegas.
+    </p>
+
+    <p>
+        Y aunque a veces no lo veas, tu trabajo cambia vidas.
+    </p>
+
+    <h2>📸 Nuestros momentos 💙</h2>
+
+    <div class="galeria">
+        <img src="foto1.jpg" alt="Foto 1">
+        <img src="foto2.jpg" alt="Foto 2">
+        <img src="foto3.jpg" alt="Foto 3">
+    </div>
 
     <h2>💙 Para ti</h2>
 
     <p>
         Estoy muy orgulloso de ti.  
-        De lo que eres, de lo que has logrado y de todo lo que vas a conseguir.
+        De todo lo que has logrado y de todo lo que te falta por lograr.
     </p>
 
     <p>
-        Nunca olvides lo importante que es tu trabajo…  
-        porque ayudas donde muchos no llegan.
+        Nunca dudes de lo increíble que eres…  
+        porque yo lo veo en ti todos los días.
     </p>
 
     <p>
-        Y yo siempre voy a estar aquí, admirándote ❤️
+        Gracias por ser como eres… por tu corazón, tu forma de pensar y tu manera de ayudar a los demás.
+    </p>
+
+    <h2>❤️</h2>
+
+    <p>
+        Kimberly…  
+        te quiero mucho, te amo profundamente.  
+    </p>
+
+    <p>
+        Siempre voy a estar para ti, apoyándote, admirándote y caminando contigo en todo lo que venga.
+    </p>
+
+    <p>
+        Con mucho amor,  
+        tuyo… Ángel 💙
     </p>
 
     <h3>Feliz Día, Kimberly 💙</h3>
@@ -122,9 +183,25 @@ function verificar() {
 
     if (respuesta.includes("trabajo social") || respuesta.includes("trabajadora social")) {
         document.getElementById("inicio").classList.add("hidden");
-        document.getElementById("sorpresa").classList.remove("hidden");
+        document.getElementById("pregunta2").classList.remove("hidden");
+
+        // 🔊 Iniciar música
+        let musica = document.getElementById("musica");
+        musica.volume = 0.3;
+        musica.play();
     } else {
         alert("Piensa en lo que estudiaste 💙");
+    }
+}
+
+function verificar2() {
+    let respuesta2 = document.getElementById("respuesta2").value.toLowerCase();
+
+    if (respuesta2.includes("kimberly")) {
+        document.getElementById("pregunta2").classList.add("hidden");
+        document.getElementById("sorpresa").classList.remove("hidden");
+    } else {
+        alert("Pista: eres tú 💙");
     }
 }
 </script>

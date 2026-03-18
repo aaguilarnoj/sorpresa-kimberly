@@ -11,6 +11,7 @@ body {
     background: linear-gradient(to bottom, #cce7ff, #ffffff);
     text-align: center;
     color: #333;
+    overflow-x: hidden;
 }
 
 .container {
@@ -43,6 +44,7 @@ input {
 .heart {
     font-size: 30px;
     animation: float 2s infinite;
+    color: #ff4da6;
 }
 
 .galeria img {
@@ -67,10 +69,12 @@ input {
 
 <body>
 
+<!-- Música de fondo -->
 <audio id="musica" loop>
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
 </audio>
 
+<!-- Pantalla inicial -->
 <div class="container" id="inicio">
     <h1>💙 Día de la Trabajadora Social 💙</h1>
     <p>Hoy celebramos a quienes cambian el mundo con empatía, amor y compromiso.</p>
@@ -84,6 +88,7 @@ input {
     <button onclick="verificar()">Entrar</button>
 </div>
 
+<!-- Segunda pregunta -->
 <div class="container hidden" id="pregunta2">
     <h2>💙 Una más... 💙</h2>
     <p>¿Quién es la mejor trabajadora social?</p>
@@ -93,6 +98,7 @@ input {
     <button onclick="verificar2()">Continuar</button>
 </div>
 
+<!-- Mensaje final con fotos y amor -->
 <div class="container hidden" id="sorpresa">
     <h1 class="heart">💙 Kimberly 💙</h1>
 
@@ -103,8 +109,7 @@ input {
 
     <p>
         Con lo que me has contado, sé el esfuerzo tan grande que hiciste para llegar hasta aquí.  
-        Sé que no fue fácil… que hubo momentos en los que tuviste que salir de tu casa,  
-        dejar a tu familia por un tiempo e ir a otras comunidades para ayudar a personas que te necesitaban.
+        Sé que no fue fácil… salir de tu casa, dejar a tu familia por un tiempo e ir a otras comunidades para ayudar a personas que te necesitaban.
     </p>
 
     <p>
@@ -118,28 +123,21 @@ input {
         De tu valentía, de tu empatía y de la persona tan hermosa que eres.
     </p>
 
-    <p>
-        No cualquiera tiene la fuerza de pensar primero en los demás,  
-        y tú lo haces… y lo haces con amor.
-    </p>
-
     <h2>🌟 Tu camino</h2>
 
     <p>
         Estás construyendo algo muy grande…  
-        estás dejando huella en las personas, en las familias y en cada lugar donde llegas.
-    </p>
-
-    <p>
+        estás dejando huella en las personas, en las familias y en cada lugar donde llegas.  
         Y aunque a veces no lo veas, tu trabajo cambia vidas.
     </p>
 
     <h2>📸 Nuestros momentos 💙</h2>
 
     <div class="galeria">
-        <img src="foto1.jpg" alt="Foto 1">
-        <img src="foto2.jpg" alt="Foto 2">
-        <img src="foto3.jpg" alt="Foto 3">
+        <img src="foto1.jpeg" alt="Foto 1">
+        <img src="foto2.jpeg" alt="Foto 2">
+        <img src="foto3.jpeg" alt="Foto 3">
+        <img src="foto4.jpeg" alt="Foto 4">
     </div>
 
     <h2>💙 Para ti</h2>
@@ -185,7 +183,7 @@ function verificar() {
         document.getElementById("inicio").classList.add("hidden");
         document.getElementById("pregunta2").classList.remove("hidden");
 
-        // 🔊 Iniciar música
+        // 🔊 Iniciar música suave
         let musica = document.getElementById("musica");
         musica.volume = 0.3;
         musica.play();

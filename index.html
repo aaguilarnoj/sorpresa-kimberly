@@ -8,10 +8,11 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background: linear-gradient(to bottom, #cce7ff, #ffffff);
+    background: linear-gradient(to bottom, #ffe6f0, #cce7ff);
     text-align: center;
     color: #333;
     overflow-x: hidden;
+    position: relative;
 }
 
 .container {
@@ -24,21 +25,23 @@ body {
 
 button {
     padding: 10px 20px;
-    background-color: #4da6ff;
+    background-color: #ff4da6;
     color: white;
     border: none;
     border-radius: 10px;
     cursor: pointer;
+    font-size: 16px;
 }
 
 button:hover {
-    background-color: #3399ff;
+    background-color: #e60073;
 }
 
 input {
     padding: 10px;
     border-radius: 10px;
     border: 1px solid #ccc;
+    font-size: 16px;
 }
 
 .heart {
@@ -63,17 +66,32 @@ input {
     50% { transform: translateY(-10px); }
     100% { transform: translateY(0); }
 }
+
+/* Fondo de corazones flotando */
+.heart-float {
+    position: absolute;
+    font-size: 20px;
+    color: rgba(255, 77, 166, 0.7);
+    animation: floatUp 5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) scale(0.5); opacity: 0.6; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+}
 </style>
 
 </head>
 <body>
 
-<!-- Música de fondo -->
+<!-- Música local -->
 <audio id="musica" loop>
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
+    <source src="musica.mp3" type="audio/mp3">
 </audio>
 
-<!-- Botón para activar música (funciona en cualquier dispositivo) -->
+<!-- Botón para activar música -->
 <div class="container" id="botonMusica">
     <button onclick="activarMusica()">🎵 Activar música de fondo</button>
 </div>
@@ -180,19 +198,29 @@ input {
 </div>
 
 <script>
+// Función para activar música y mostrar primera pantalla
 function activarMusica() {
     let musica = document.getElementById("musica");
     musica.volume = 0.3;
     musica.play();
 
-    // Ocultar el botón y mostrar pantalla inicial
     document.getElementById("botonMusica").classList.add("hidden");
     document.getElementById("inicio").classList.remove("hidden");
+
+    // Crear corazones flotando aleatorios
+    for(let i=0;i<20;i++){
+        let heart = document.createElement("div");
+        heart.className = "heart-float";
+        heart.style.left = Math.random()*100 + "vw";
+        heart.style.animationDuration = 3 + Math.random()*4 + "s";
+        heart.innerHTML = "💖";
+        document.body.appendChild(heart);
+    }
 }
 
+// Primera pregunta
 function verificar() {
     let respuesta = document.getElementById("respuesta").value.toLowerCase();
-
     if (respuesta.includes("trabajo social") || respuesta.includes("trabajadora social")) {
         document.getElementById("inicio").classList.add("hidden");
         document.getElementById("pregunta2").classList.remove("hidden");
@@ -201,9 +229,9 @@ function verificar() {
     }
 }
 
+// Segunda pregunta
 function verificar2() {
     let respuesta2 = document.getElementById("respuesta2").value.toLowerCase();
-
     if (respuesta2.includes("kimberly")) {
         document.getElementById("pregunta2").classList.add("hidden");
         document.getElementById("sorpresa").classList.remove("hidden");

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Para Kimberly 💙</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to bottom, #cce7ff, #ffffff);
+    text-align: center;
+    color: #333;
+}
+
+.container {
+    padding: 30px;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4da6ff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #3399ff;
+}
+
+input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+.heart {
+    font-size: 30px;
+    animation: float 2s infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container" id="inicio">
+    <h1>💙 Día de la Trabajadora Social 💙</h1>
+    <p>Hoy celebramos a quienes cambian el mundo con empatía, amor y compromiso.</p>
+    <p>Hay alguien muy especial que merece ver esto...</p>
+
+    <h3>Responde para continuar:</h3>
+    <p>¿Qué profesión dedica su vida a ayudar a las personas y a la comunidad?</p>
+
+    <input type="text" id="respuesta" placeholder="Escribe tu respuesta">
+    <br><br>
+    <button onclick="verificar()">Entrar</button>
+</div>
+
+<div class="container hidden" id="sorpresa">
+    <h1 class="heart">💙 Kimberly 💙</h1>
+
+    <p>
+        Hoy no solo celebramos el Día de la Trabajadora Social…  
+        hoy celebro a una mujer increíble que decidió dedicar su vida a ayudar a los demás.
+    </p>
+
+    <p>
+        Kimberly, tu vocación habla de tu corazón, de tu empatía y de la fuerza que tienes para cambiar vidas.
+    </p>
+
+    <p>
+        No es una profesión fácil… pero es una de las más valiosas que existen.
+    </p>
+
+    <h2>🌟 Inspiración</h2>
+
+    <p>
+        En Guatemala, muchas mujeres han marcado la diferencia desde el trabajo social, luchando por comunidades,
+        por derechos y por un país mejor.
+    </p>
+
+    <p>
+        Y tú, Kimberly, también estás en ese camino…  
+        el de dejar huella en las personas, en las familias y en la sociedad.
+    </p>
+
+    <h2>💙 Para ti</h2>
+
+    <p>
+        Estoy muy orgulloso de ti.  
+        De lo que eres, de lo que has logrado y de todo lo que vas a conseguir.
+    </p>
+
+    <p>
+        Nunca olvides lo importante que es tu trabajo…  
+        porque ayudas donde muchos no llegan.
+    </p>
+
+    <p>
+        Y yo siempre voy a estar aquí, admirándote ❤️
+    </p>
+
+    <h3>Feliz Día, Kimberly 💙</h3>
+</div>
+
+<script>
+function verificar() {
+    let respuesta = document.getElementById("respuesta").value.toLowerCase();
+
+    if (respuesta.includes("trabajo social") || respuesta.includes("trabajadora social")) {
+        document.getElementById("inicio").classList.add("hidden");
+        document.getElementById("sorpresa").classList.remove("hidden");
+    } else {
+        alert("Piensa en lo que estudiaste 💙");
+    }
+}
+</script>
+
+</body>
+</html>

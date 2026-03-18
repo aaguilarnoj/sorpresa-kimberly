@@ -66,7 +66,6 @@ input {
 </style>
 
 </head>
-
 <body>
 
 <!-- Música de fondo -->
@@ -74,8 +73,13 @@ input {
     <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
 </audio>
 
+<!-- Botón para activar música (funciona en cualquier dispositivo) -->
+<div class="container" id="botonMusica">
+    <button onclick="activarMusica()">🎵 Activar música de fondo</button>
+</div>
+
 <!-- Pantalla inicial -->
-<div class="container" id="inicio">
+<div class="container hidden" id="inicio">
     <h1>💙 Día de la Trabajadora Social 💙</h1>
     <p>Hoy celebramos a quienes cambian el mundo con empatía, amor y compromiso.</p>
     <p>Hay alguien muy especial que merece ver esto...</p>
@@ -176,17 +180,22 @@ input {
 </div>
 
 <script>
+function activarMusica() {
+    let musica = document.getElementById("musica");
+    musica.volume = 0.3;
+    musica.play();
+
+    // Ocultar el botón y mostrar pantalla inicial
+    document.getElementById("botonMusica").classList.add("hidden");
+    document.getElementById("inicio").classList.remove("hidden");
+}
+
 function verificar() {
     let respuesta = document.getElementById("respuesta").value.toLowerCase();
 
     if (respuesta.includes("trabajo social") || respuesta.includes("trabajadora social")) {
         document.getElementById("inicio").classList.add("hidden");
         document.getElementById("pregunta2").classList.remove("hidden");
-
-        // 🔊 Iniciar música suave
-        let musica = document.getElementById("musica");
-        musica.volume = 0.3;
-        musica.play();
     } else {
         alert("Piensa en lo que estudiaste 💙");
     }
